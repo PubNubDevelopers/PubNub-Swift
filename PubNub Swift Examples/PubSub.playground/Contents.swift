@@ -32,7 +32,6 @@ class PubNubPublisher: NSObject {
     }
 }
 let publisher = PubNubPublisher(publishChannel: "PlaygroundChannel")
-//publisher.publish(message: "Hello from the PubNub Swift SDK!")
 
 class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     
@@ -44,19 +43,7 @@ class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     
     // Handle new message from one of channels on which client has been subscribed.
     func client(_ client: PubNub, didReceiveMessage message: PNMessageResult) {
-        // Handle new message stored in message.data.message
-        if message.data.subscription != nil {
-            
-            // Message has been received on channel group stored in
-            // message.data.subscribedChannel
-        }
-        else {
-            
-            // Message has been received on channel stored in
-            // message.data.subscribedChannel
-        }
-        
-        // carefully unwrap message payload, it is an optional
+        // Unwrap message payload.
         guard let receivedMessage = message.data.message else {
             print("No message payload received")
             return
@@ -65,10 +52,8 @@ class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
         print("Received message: \(receivedMessage) on channel " +
             "\((message.data.subscription ?? message.data.channel)!) at time: " +
             "\(message.data.timetoken)")
-        
-        //Only needed when running in playground
-        // PlaygroundPage.current.finishExecution()
     }
 }
 
-let subscriber = PubNubSubscriber(publishChannel: "PlaygroundChannel")
+let subscriber = PubNubSubscriber(publishChannel: "PlaygroundChannel") //
+publisher.publish(message: "Hello from the PubNub Swift SDK!") // Publish a message
