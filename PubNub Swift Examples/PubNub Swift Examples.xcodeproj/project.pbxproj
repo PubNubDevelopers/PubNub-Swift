@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A10DB62CB9E407A9DC7506A /* Pods_PubNub_Swift_Examples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E776CD402A5E4C9C64D88A /* Pods_PubNub_Swift_Examples.framework */; };
 		CB00A7EF21B9918C008462E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00A7EE21B9918C008462E7 /* AppDelegate.swift */; };
 		CB00A7F121B9918C008462E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB00A7F021B9918C008462E7 /* ViewController.swift */; };
 		CB00A7F421B9918C008462E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB00A7F221B9918C008462E7 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CBC53160C3E16F56C2341DC /* Pods-PubNub Swift Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PubNub Swift Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-PubNub Swift Examples/Pods-PubNub Swift Examples.release.xcconfig"; sourceTree = "<group>"; };
+		972EE6AA80ED13DE7E38B0AE /* Pods-PubNub Swift Examples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PubNub Swift Examples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PubNub Swift Examples/Pods-PubNub Swift Examples.debug.xcconfig"; sourceTree = "<group>"; };
+		A2E776CD402A5E4C9C64D88A /* Pods_PubNub_Swift_Examples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PubNub_Swift_Examples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB00A7EB21B9918C008462E7 /* PubNub Swift Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PubNub Swift Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB00A7EE21B9918C008462E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB00A7F021B9918C008462E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A10DB62CB9E407A9DC7506A /* Pods_PubNub_Swift_Examples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F33F53DDB2B423DE9927C62 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				972EE6AA80ED13DE7E38B0AE /* Pods-PubNub Swift Examples.debug.xcconfig */,
+				2CBC53160C3E16F56C2341DC /* Pods-PubNub Swift Examples.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEBEB694E496E2602FA9B287 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2E776CD402A5E4C9C64D88A /* Pods_PubNub_Swift_Examples.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CB00A7E221B9918C008462E7 = {
 			isa = PBXGroup;
 			children = (
 				CB00A7ED21B9918C008462E7 /* PubNub Swift Examples */,
 				CB00A7EC21B9918C008462E7 /* Products */,
+				6F33F53DDB2B423DE9927C62 /* Pods */,
+				AEBEB694E496E2602FA9B287 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB00A7FD21B9918E008462E7 /* Build configuration list for PBXNativeTarget "PubNub Swift Examples" */;
 			buildPhases = (
+				6FDA8BDBF707434967E156F1 /* [CP] Check Pods Manifest.lock */,
 				CB00A7E721B9918C008462E7 /* Sources */,
 				CB00A7E821B9918C008462E7 /* Frameworks */,
 				CB00A7E921B9918C008462E7 /* Resources */,
+				8E7952F6E06635ACF7ACC554 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FDA8BDBF707434967E156F1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PubNub Swift Examples-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E7952F6E06635ACF7ACC554 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PubNub Swift Examples/Pods-PubNub Swift Examples-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PubNub/PubNub.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PubNub.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PubNub Swift Examples/Pods-PubNub Swift Examples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB00A7E721B9918C008462E7 /* Sources */ = {
@@ -280,6 +353,7 @@
 		};
 		CB00A7FE21B9918E008462E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 972EE6AA80ED13DE7E38B0AE /* Pods-PubNub Swift Examples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +372,7 @@
 		};
 		CB00A7FF21B9918E008462E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CBC53160C3E16F56C2341DC /* Pods-PubNub Swift Examples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
