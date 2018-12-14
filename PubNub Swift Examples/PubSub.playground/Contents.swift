@@ -15,7 +15,7 @@ class PubNubPublisher: NSObject {
     }
     
     func publish(message: String?) {
-        guard let publishString = message else {
+        guard let publishString = message else { 
             print("Nothing to publish")
             return
         }
@@ -31,7 +31,7 @@ class PubNubPublisher: NSObject {
         }
     }
 }
-let publisher = PubNubPublisher(publishChannel: "PlaygroundChannel")
+let publisher = PubNubPublisher(publishChannel: "channeltestu")
 
 class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     
@@ -55,5 +55,10 @@ class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     }
 }
 
-let subscriber = PubNubSubscriber(publishChannel: "PlaygroundChannel") //
+let subscriber = PubNubSubscriber(publishChannel: "channeltestu") //
 publisher.publish(message: "Hello from the PubNub Swift SDK!") // Publish a message
+
+for i in 100...500 {
+    publisher.publish(message: String(i)+" pn") // Publish a message
+    usleep(25000)
+}

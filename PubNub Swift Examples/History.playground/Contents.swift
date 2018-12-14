@@ -9,13 +9,13 @@ class PubNubHistorian: NSObject {
     let historyChannel: String
     
     required init(historyChannel: String) {
-        self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3   dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
+        self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
         self.historyChannel = historyChannel
         super.init()
     }
     
     func fetchLast() {
-        self.client.historyForChannel(self.historyChannel, start: nil, end: nil, limit: 1, withCompletion: { (result, status) in
+        self.client.historyForChannel(self.historyChannel, start: nil, end: nil, limit: 1, reverse: false, withCompletion: { (result, status) in
             if status == nil {
                 print(result!.data.messages)
                 /**
@@ -39,7 +39,8 @@ class PubNubHistorian: NSObject {
         })
     }
     
-    func historyNewerThen(_ date: NSNumber, withCompletion closure: @escaping (Array<Any>) -> Void) {
+    func historyNewerThen(_ date: NSNumber,
+                          withCompletion closure: @escaping (Array<Any>) -> Void) {
         
         var msgs: Array<Any> = []
         self.historyNewerThen(date, withProgress: { (messages) in
@@ -49,17 +50,19 @@ class PubNubHistorian: NSObject {
         })
     }
     
-    private func historyNewerThen(_ date: NSNumber, withProgress closure: @escaping (Array<Any>) -> Void) {
+    private func historyNewerThen(_ date: NSNumber,
+                                  withProgress closure: @escaping (Array<Any>) -> Void) {
         
         self.client.historyForChannel(self.historyChannel, start: date, end: nil, limit: 100,
-                                       reverse: false, withCompletion: { (result, status) in
+                                       reverse: true, withCompletion: { (result, status) in
                                         
                                         if status == nil {
                                             
                                             closure((result?.data.messages)!)
                                             if result?.data.messages.count == 100 {
                                                 
-                                                self.historyNewerThen((result?.data.end)!, withProgress: closure)
+                                                self.historyNewerThen((result?.data.end)!,
+                                                                      withProgress: closure)
                                             }
                                         }
                                         else {
@@ -75,15 +78,14 @@ class PubNubHistorian: NSObject {
                                         }
         })
     }
-
+    
 }
-let historian = PubNubHistorian(historyChannel: "channel500")
+let historian = PubNubHistorian(historyChannel: "channeltestu")
 
 historian.fetchLast() // Request last message from history.
 
 // Pull out all messages newer then message sent at 15445546833194000.
-let date = NSNumber(value: (15445683836084000 as CUnsignedLongLong));
+let date = NSNumber(value: (15447499671188207 as CUnsignedLongLong));
 historian.historyNewerThen(date, withCompletion:  { (messages) in
     print("Messages from history: \(messages)")
 })
-
