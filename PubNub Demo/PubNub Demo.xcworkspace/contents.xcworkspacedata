@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/chandler/Desktop/tuts/PubNub Demo/History.playground">
+      location = "group:History.playground">
    </FileRef>
    <FileRef
       location = "group:PubSub.playground">
