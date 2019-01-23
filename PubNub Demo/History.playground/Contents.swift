@@ -6,7 +6,9 @@ class PubNubHistorian: NSObject {
     let historyChannel: String
     
     required init(historyChannel: String) {
-        self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
+        self.client = PubNub.clientWithConfiguration(PNConfiguration(
+            publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4",
+            subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
         self.historyChannel = historyChannel
         super.init()
     }

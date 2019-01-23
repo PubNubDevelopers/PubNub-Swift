@@ -9,7 +9,9 @@ class PubNubPublisher: NSObject {
     let channel: String
     
     required init(channel: String) {
-        self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
+        self.client = PubNub.clientWithConfiguration(PNConfiguration(
+            publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4",
+            subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
         self.channel = channel
         super.init()
     }
@@ -37,7 +39,7 @@ class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     required init(channel: String) {
         super.init(channel: channel)
         client.addListener(self)
-        client.subscribeToChannels([self.channel], withPresence: false)
+        client.subscribeToChannels([self.channel], withPresence: true)
     }
     
     // Handle new message from one of channels on which client has been subscribed.

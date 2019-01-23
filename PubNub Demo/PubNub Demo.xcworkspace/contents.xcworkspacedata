@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:PAM.playground">
+   </FileRef>
+   <FileRef
+      location = "group:Presence .playground">
+   </FileRef>
+   <FileRef
       location = "group:History.playground">
    </FileRef>
    <FileRef
