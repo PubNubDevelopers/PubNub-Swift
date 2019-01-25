@@ -1,24 +1,81 @@
 import UIKit
- import PubNub
+import PlaygroundSupport
+//PlaygroundPage.current.needsIndefiniteExecution = true // Needed in playground to wait for messages.
+
+import PubNub;
+
+class PubNubPublisher: NSObject {
+    let client: PubNub
+    let channel: String
+    
+    required init(channel: String) {
+        let config = PNConfiguration(
+            publishKey: "pub-c-d8655229-a3ee-45ff-8196-7d2c851e6a5b",
+            subscribeKey: "sub-c-045f9800-20d0-11e9-8374-224f1c4df0a4")
+        config.authKey = "my-password-12345" // Uncomment to test using auth key.
+        self.client = PubNub.clientWithConfiguration(config)
+        self.channel = channel
+        super.init()
+    }
+    
+    func publish(message: String?) {
+        guard let publishString = message else {
+            print("Nothing to publish")
+            return
+        }
+        client.publish(publishString, toChannel: self.channel) { (status) in
+            if status.isError {
+                // Handle message publish error.
+                // Request can be resent using: status.retry()
+                print("Error publishing message: \(publishString)")
+            } else {
+                // Message was successfully published.
+                print("Successful publish of message: \(publishString)")
+            }
+        }
+    }
+}
+
+class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
+    
+    required init(channel: String) {
+        super.init(channel: channel)
+        client.addListener(self)
+        client.subscribeToChannels([self.channel], withPresence: true)
+    }
+    
+    // Handle new message from one of channels on which client has been subscribed.
+    func client(_ client: PubNub, didReceiveMessage message: PNMessageResult) {
+        // Unwrap message payload.
+        guard let receivedMessage = message.data.message else {
+            print("No message payload received")
+            return
+        }
+        
+        print("Received message: \(receivedMessage) on channel " +
+            "\((message.data.subscription ?? message.data.channel)!) at time: " +
+            "\(message.data.timetoken)")
+    }
+}
+
+// let subscriber = PubNubSubscriber(channel: "TestChannel") // Subscribe for messages.
+
+let publisher = PubNubPublisher(channel: "TestChannel")
+
+/*
+ // Javascript code to issue grant:
+ pubnub.grant({
+    channels: "TestChannel",
+    read: true,   // true to grant, false to revoke
+    write: true, // true to grant, false to revoke
+    ttl: 0,           // Time to live in minutes, 0 for permanent.
+ }, (status, response) => { console.log(status, response); });
  
- class PubNubPresence: NSObject {
- let client: PubNub
- let channel: String
- 
- required init(channel: String) {
- self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
- self.channel = channel
- super.init()
- }
- 
- //
- func doSomething() {
- 
- }
- }
- 
- 
- let presenceDemo = PubNubPresence(channel: "TestChannel") // Set channel.
- 
- presenceDemo.doSomething() //
- 
+*/
+/*
+ 1. Restricted with channel + password grant.
+ 2. Try publishing without uncommenting authKey above.
+ 3. Try again with authKey set.
+*/
+
+publisher.publish(message: "Hello from the PubNub Swift SDK!") // Publish a message.

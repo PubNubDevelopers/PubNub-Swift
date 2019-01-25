@@ -10,9 +10,9 @@ class PubNubPresence: NSObject, PNObjectEventListener {
     
     required init(channel: String) {
         let config = PNConfiguration(
-            publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4",
-            subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351")
-        config.uuid = "**-DEMO-UUID-**"
+            publishKey: "pub-c-adbaed0a-b874-41ee-9f99-5fb2efc3d5a4",
+            subscribeKey: "sub-c-51b16596-2019-11e9-932e-e20455fd93ae")
+        config.uuid = "DEMO-UUID" // Comment to allow PubNub to create UUID.
         self.client = PubNub.clientWithConfiguration(config)
         self.channel = channel
         super.init()
@@ -46,7 +46,7 @@ class PubNubPresence: NSObject, PNObjectEventListener {
                 // self.getState() // Get custom presence key/value pairs for a specific UUID.
                 sleep(1)
                 self.client.unsubscribeFromChannels([self.channel], withPresence: true) // Unsubscribe from channel.
-
+                
             }
         }
         else {
@@ -180,33 +180,3 @@ class PubNubPresence: NSObject, PNObjectEventListener {
 }
 
 let presenceDemo = PubNubPresence(channel: "TestPresence") // Set channel.
-
-
-
-
-
-/*
- import UIKit
- import PubNub
- 
- class PubNubPresence: NSObject {
- let client: PubNub
- let channel: String
- 
- required init(channel: String) {
- self.client = PubNub.clientWithConfiguration(PNConfiguration(publishKey: "pub-c-782360a0-ace3-411a-9707-3dbcdc0b86a4", subscribeKey: "sub-c-5eb10e66-f816-11e8-8ebf-6a684a5fb351"))
- self.channel = channel
- super.init()
- }
- 
- //
- func doSomething() {
- 
- }
- }
- 
- 
- let presenceDemo = PubNubPresence(channel: "TestChannel") // Set channel.
- 
- presenceDemo.doSomething() //
- */

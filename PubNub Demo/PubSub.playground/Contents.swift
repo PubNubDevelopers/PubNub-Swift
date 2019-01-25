@@ -61,8 +61,10 @@ let subscriber = PubNubSubscriber(channel: "TestChannel") // Subscribe for messa
 let publisher = PubNubPublisher(channel: "TestChannel")
 publisher.publish(message: "Hello from the PubNub Swift SDK!") // Publish a message.
 
+/*
 // Send 200 messages. Useful to test history api.
 for i in 1...200 {
     publisher.publish(message: "Test message #"+String(i)) // Publish a message
     usleep(25000)
 }
+*/

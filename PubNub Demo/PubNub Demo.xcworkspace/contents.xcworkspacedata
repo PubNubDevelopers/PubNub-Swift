@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:StreamController.playground">
+   </FileRef>
+   <FileRef
       location = "group:PAM.playground">
    </FileRef>
    <FileRef
