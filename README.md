@@ -92,7 +92,7 @@ Using PubNubs stream controller you can ensure that messages always reach the ri
 
 ## [Access Manager Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PAM.playground/Contents.swift)
 
-With Access Manager you can restrict reading and writing messages on PubNub. You can restrict access on a key level, on the channel level, or with an access token. You can use Access Manager to restrict access to services, create 1 to 1 chats, or ban users from game lobbies.
+With Access Manager you can restrict reading and writing messages on PubNub. You can restrict access on a key level, on the channel level, or with an access token.
 
 As your apps administrator you’ll need to be the one to grants and restricts access to client. This can be done using the Grant method available in other PubNub SDKs. The PubNub Swift SDK does not yet include the Grant API call because it is intended only for client applications.
 
@@ -111,3 +111,4 @@ Grants make PubNub work well with 0Auth applications. On your server you can gra
 - If you attempt to publish a message without setting the key you’ll receive an error.
 - If you set the auth key and try again the message will be successfully sent.
 
+You can use Access Manager to restrict access to services, create 1 to 1 chats, or ban users from game lobbies.
