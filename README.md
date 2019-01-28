@@ -92,4 +92,22 @@ Using PubNubs stream controller you can ensure that messages always reach the ri
 
 ## [Access Manager Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PAM.playground/Contents.swift)
 
+With Access Manager you can restrict reading and writing messages on PubNub. You can restrict access on a key level, on the channel level, or with an access token. You can use Access Manager to restrict access to services, create 1 to 1 chats, or ban users from game lobbies.
+
+As your apps administrator you’ll need to be the one to grants and restricts access to client. This can be done using the Grant method available in other PubNub SDKs. The PubNub Swift SDK does not yet include the Grant API call because it is intended only for client applications.
+
+You can only make grants if the PubNub client is connected with your secret key. The secret key is added with the subscribe and publish keys when you initialize a client. You should only initialize with a secret key in secure server instance of pubnub or in a PubNub serverless environment.
+
+Client devices can always connect without the secret key but they won’t be able to make grants. Users with the secret key can revoke reading and writing messages for the entire keyset, channels or channel groups, and for users with specific auth keys.
+
+Grants can be issued with a TTL in minutes or they can be made permanent.
+
+Grants make PubNub work well with 0Auth applications. On your server you can grant a users auth token after a login provider makes a callback to your server.
+
+ **You must enable Access Manager for your api keys.** To enable Access Manager visit: **[dashboard.pubnub.com](https://dashboard.pubnub.com)**.
+
+### In this playground:
+- On a secure server [issue a grant](https://github.com/chandler767/PubNub-Swift/blob/d158fb684232457c16d6b739f951505d6f8c62f6/PubNub%20Demo/PAM.playground/Contents.swift#L66) to restrict reading and writing to users with a key.
+- If you attempt to publish a message without setting the key you’ll receive an error.
+- If you set the auth key and try again the message will be successfully sent.
 
