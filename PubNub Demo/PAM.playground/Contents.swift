@@ -12,7 +12,7 @@ class PubNubPublisher: NSObject {
         let config = PNConfiguration(
             publishKey: "pub-c-d8655229-a3ee-45ff-8196-7d2c851e6a5b",
             subscribeKey: "sub-c-045f9800-20d0-11e9-8374-224f1c4df0a4")
-        config.authKey = "my-password-12345" // Uncomment to test using auth key.
+        // config.authKey = "my-password-12345" // Uncomment to test using auth key.
         self.client = PubNub.clientWithConfiguration(config)
         self.channel = channel
         super.init()
@@ -58,7 +58,7 @@ class PubNubSubscriber: PubNubPublisher, PNObjectEventListener {
     }
 }
 
-// let subscriber = PubNubSubscriber(channel: "TestChannel") // Subscribe for messages.
+let subscriber = PubNubSubscriber(channel: "TestChannel") // Subscribe for messages.
 
 let publisher = PubNubPublisher(channel: "TestChannel")
 

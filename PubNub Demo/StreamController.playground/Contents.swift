@@ -108,4 +108,3 @@ subscriberGroup.client.addChannels(["TestChannel"], toGroup: "ChannelGroup", wit
 // 5. Publish to "TestChannel" inside "ChannelGroup".
 let PubNubPublisherGroupChild = PubNubPublisher(channel: "TestChannel")
 PubNubPublisherGroupChild.publish(message: "Channel group test.") // Publish a message.
-

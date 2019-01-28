@@ -26,7 +26,6 @@ class PubNubHistorian: NSObject {
                  */
             }
             else {
-                
                 /**
                  Handle message history download error. Check 'category' property
                  to find out possible reason because of which request did fail.
@@ -66,7 +65,6 @@ class PubNubHistorian: NSObject {
                                              to find out possible reason because of which request did fail.
                                              Review 'errorData' property (which has PNErrorData data type) of status
                                              object to get additional information about issue.
-                                             
                                              Request can be resent using: [status retry];
                                              */
                                         }
