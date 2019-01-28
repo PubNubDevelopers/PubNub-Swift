@@ -6,6 +6,7 @@ This repo contains Swift playgrounds to demo the PubNub Swift SDK features. Incl
 - [Stream Controller](https://www.pubnub.com/docs/swift/stream-controller)
 - [Access Manager](https://www.pubnub.com/docs/swift/pam-security)
 
+
 ## [Publish and Subscribe Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PubSub.playground/Contents.swift)
 
 You can have many or just one internet connected device publishing and subscribing to messages with an always on connection. Messages can contain whatever type on content you want up to 32 kilobytes.
@@ -18,6 +19,7 @@ You can have many or just one internet connected device publishing and subscribi
 When the script is run the subscribe listener is started and a message is published to the “TestChannel” channel. Any other device subscribed to “TestChannel” and using the same API keys will receive this message in realtime. If another user was running this same script on the other side of the planet they would receive the same messages in realtime.
 
 PubNub is completely free up to one million messages a month.
+
 
 ## [Storage and Playback Playground](https://github.com/chandler767/PubNub-Swift/tree/master/PubNub%20Demo/History.playground)
 
@@ -36,6 +38,7 @@ Once messages have been sent on the PubNub data stream network you can retrieve 
 - An empty array will be returned if there were no messages ever sent to the channel.
 
 This message functionality is ideal for chat applications. When a user opens a chat application the client can download the messages previously sent while the user was offline.
+
 
 ## [Presence Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/Presence%20.playground/Contents.swift)
 
@@ -59,6 +62,34 @@ The one mutator is the setstate() method that allows you to pass a custom object
 
 PubNub presence makes online user information easy to obtain so you can build online user functionality into your chat applications, smart devices, or fleet management application.
 
+
 ## [Stream Controller Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/StreamController.playground/Contents.swift)
 
+Stream controller allows you to have more control over your message topology with features like multiplexing, channel wildcards, and channel groups. PubNub data streams often need to be restricted so that only certain groups receive information. 
+
+Multiplexing allows a client to be subscribed to multiple channels at once. Multiplexing is enabled by default. 
+
+A client can subscribe to up to 50 channels at one. If a client needs to subscribe to more than 50 channels you can use wildcard subscribe or channel groups.
+
+Wilcard channels are many channels in one. In a game you could use channel wildcards to make sure that game updates make it to everyone, but team updates only go to that specific team. Think of wildcard channels as having a tree structure with a maximum height of 3. Each node can have an unlimited number of children up to the maximum string limit of 92. Subscribing to a wildcard counts as one subscribe with the client listening to all channels fitting the wildcard description.
+
+Channel groups are a single subscribe that listens to multiple channels. Any user of your keyset can create a channel group containing up to 2000 channels and subscribe to it. A client can be subscribed to a maximum of 10 channel groups at one time per connection. A keyset can have an unlimited amount of channel groups.
+
+The List Channels getter method returns a list of channels in a group.
+
+ Add Channels, Remove Channels, and Delete Group are the 3 setter methods for channel group maintenance.
+ 
+ **You must enable Stream Controller for your api keys.** To enable Stream Controller visit: **[dashboard.pubnub.com](https://dashboard.pubnub.com)**.
+
+### In this playground:
+- First a client is created for the PubNub configuration using PubNub api keys.
+- Subscribe to a wildcard channel and a channel group.
+- Publish to a channel on the first level of a wildcard channel and then again on the second level. This is the maximum depth of a wildcard channel.
+- Then add a channel to our group channel with the Add Channels method. Publish a message to the channel we added.
+
+Using PubNubs stream controller you can ensure that messages always reach the right clients in your dating app, realtime multiplayer game, or pizza delivery tracker. 
+
+
 ## [Access Manager Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PAM.playground/Contents.swift)
+
+
