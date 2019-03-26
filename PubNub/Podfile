@@ -1,0 +1,7 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'PubNub' do
+    pod 'PubNub', '~> 4.0'
+end
+
