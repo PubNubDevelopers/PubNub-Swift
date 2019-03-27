@@ -7,11 +7,13 @@ This repo contains Swift playgrounds to demo the PubNub Swift SDK features. Incl
 - [Access Manager](https://www.pubnub.com/docs/swift/pam-security)
 
 ### Running Playgrounds
-1. Make sure to add your keys from the [PubNub Dashboard](https://dashboard.pubnub.com).
-2. Click on "PubNub.xcodeproj" in the project explorer and press Command + Option + Shift + K. 
-3. Press Command + B.
-4. Select the playground you want to demo.
-5. Press the right-facing blue arrow at the bottom of the Xcode window to run the playground.
+1. Open "PubNub.xcworkspace" with Xcode.
+2. Make sure to add your keys from the [PubNub Dashboard](https://dashboard.pubnub.com).
+3. Click on "PubNub.xcodeproj" in the Project Explorer on the left of the Xcode window. 
+4. Press Command + Option + Shift + K to clean the build folder
+5. Press Command + B to build the project.
+6. Select the playground you want to demo in the Project Explorer.
+7. Press the right-facing blue arrow at the bottom of the Xcode window to run the playground.
 
 ## [Publish and Subscribe Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PubSub.playground/Contents.swift)
 
