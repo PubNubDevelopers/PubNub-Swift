@@ -218,7 +218,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Chandler Mayo";
+				ORGANIZATIONNAME = PubNub;
 				TargetAttributes = {
 					CB1EAF8B224AE50000FEA5C5 = {
 						CreatedOnToolsVersion = 10.1;
@@ -513,6 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 255ZVKZS8M;
 				INFOPLIST_FILE = PubNub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,6 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 255ZVKZS8M;
 				INFOPLIST_FILE = PubNub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

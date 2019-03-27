@@ -10,8 +10,8 @@ class PubNubPublisher: NSObject {
     
     required init(channel: String) {
         let config = PNConfiguration(
-            publishKey: "pub-c-26d14f06-e4b4-4541-b8b5-a878f51aaaf5",
-            subscribeKey: "sub-c-ae65a0e0-501b-11e9-8d60-1a250947a5a3")
+            publishKey: "YOUR_PUB_KEY_HERE",
+            subscribeKey: "YOUR_SUB_KEY_HERE")
         // config.authKey = "my-password-12345" // Uncomment to test using auth key.
         self.client = PubNub.clientWithConfiguration(config)
         self.channel = channel
