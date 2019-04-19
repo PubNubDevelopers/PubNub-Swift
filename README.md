@@ -1,4 +1,4 @@
-# PubNub Swift Demos
+# PubNub Swift SDK Demo Code
 This repo contains Swift playgrounds to demo the PubNub Swift SDK features. Included in this repo are Swift demos for:
 - [Publish and Subscribe](https://www.pubnub.com/docs/swift/data-streams-publish-and-subscribe)
 - [Storage and Playback](https://www.pubnub.com/docs/swift/storage-and-history)
