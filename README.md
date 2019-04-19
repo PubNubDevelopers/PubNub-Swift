@@ -6,6 +6,20 @@ This repo contains Swift playgrounds to demo the PubNub Swift SDK features. Incl
 - [Stream Controller](https://www.pubnub.com/docs/swift/stream-controller)
 - [Access Manager](https://www.pubnub.com/docs/swift/pam-security)
 
+## Before you Run
+Be sure to insert your PubNub API Keys in the PubNub connection code.
+```swift
+self.client = PubNub.clientWithConfiguration(PNConfiguration(
+    publishKey: "YOUR_PUB_KEY_HERE",
+    subscribeKey: "YOUR_SUB_KEY_HERE"))
+```
+
+PubNub accounts are **free** up to 1 million transactions per month.
+
+<a href="https://dashboard.pubnub.com/signup?devrel_gh=pubnub-api-demos-swift">
+    <img alt="PubNub Signup" src="https://i.imgur.com/og5DDjf.png" width=260 height=97/>
+</a>
+
 ### Running Playgrounds
 1. Open "PubNub.xcworkspace" with Xcode.
 2. Make sure to add your keys from the [PubNub Dashboard](https://dashboard.pubnub.com).
@@ -15,7 +29,7 @@ This repo contains Swift playgrounds to demo the PubNub Swift SDK features. Incl
 6. Select the playground you want to demo in the Project Explorer.
 7. Press the right-facing blue arrow at the bottom of the Xcode window to run the playground.
 
-## [Publish and Subscribe Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PubSub.playground/Contents.swift)
+## [Publish and Subscribe Playground](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/PubSub.playground/Contents.swift)
 
 You can have many or just one internet connected device publishing and subscribing to messages with an always on connection. Messages can contain whatever type on content you want up to 32 kilobytes.
 
@@ -29,7 +43,7 @@ When the script is run the subscribe listener is started and a message is publis
 PubNub is completely free up to one million messages a month.
 
 
-## [Storage and Playback Playground](https://github.com/chandler767/PubNub-Swift/tree/master/PubNub%20Demo/History.playground)
+## [Storage and Playback Playground (aka History)](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/History.playground/Contents.swift)
 
 Once messages have been sent on the PubNub data stream network you can retrieve them later with the History API. Message can be sent with a time to live or stored indefinitely. Messages can be deleted.
 
@@ -48,7 +62,7 @@ Once messages have been sent on the PubNub data stream network you can retrieve 
 This message functionality is ideal for chat applications. When a user opens a chat application the client can download the messages previously sent while the user was offline.
 
 
-## [Presence Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/Presence%20.playground/Contents.swift)
+## [Presence Playground](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/StreamController.playground/Contents.swift)
 
 The Presence API provides an easy way to determine what users or devices are subscribed to your PubNub channels. Presence has 5 client events that will fire for every subscriber on your PubNub keyset: Join, leave, timeout, Set state, and interval. You can register an event handler for each of these events. The event methods provide information like the users UUID and custom state object.
 
@@ -71,7 +85,7 @@ The one mutator is the setstate() method that allows you to pass a custom object
 PubNub presence makes online user information easy to obtain so you can build online user functionality into your chat applications, smart devices, or fleet management application.
 
 
-## [Stream Controller Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/StreamController.playground/Contents.swift)
+## [Stream Controller Playground](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/StreamController.playground/Contents.swift)
 
 Stream controller allows you to have more control over your message topology with features like multiplexing, channel wildcards, and channel groups. PubNub data streams often need to be restricted so that only certain groups receive information. 
 
@@ -98,7 +112,7 @@ The List Channels getter method returns a list of channels in a group.
 Using PubNubs stream controller you can ensure that messages always reach the right clients in your dating app, realtime multiplayer game, or pizza delivery tracker. 
 
 
-## [Access Manager Playground](https://github.com/chandler767/PubNub-Swift/blob/master/PubNub%20Demo/PAM.playground/Contents.swift)
+## [Access Manager Playground (aka PAM)](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/PAM.playground/Contents.swift)
 
 With Access Manager you can restrict reading and writing messages on PubNub. You can restrict access on a key level, on the channel level, or with an access token.
 
@@ -115,7 +129,7 @@ Grants make PubNub work well with 0Auth applications. On your server you can gra
  **You must enable Access Manager for your api keys.** To enable Access Manager visit: **[dashboard.pubnub.com](https://dashboard.pubnub.com)**.
 
 ### In this playground:
-- On a secure server [issue a grant](https://github.com/chandler767/PubNub-Swift/blob/d158fb684232457c16d6b739f951505d6f8c62f6/PubNub%20Demo/PAM.playground/Contents.swift#L66) to restrict reading and writing to users with a key.
+- On a secure server [issue a grant](https://github.com/PubNubDevelopers/pubnub-api-demos-swift/blob/master/PubNub/PAM.playground/Contents.swift#L66) to restrict reading and writing to users with a key.
 - If you attempt to publish a message without setting the key you’ll receive an error.
 - If you set the auth key and try again the message will be successfully sent.
 
